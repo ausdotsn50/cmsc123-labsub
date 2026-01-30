@@ -1,13 +1,3 @@
-/*
-    During this lab exercise (Lab 1 for CMSC 123), only a hardcoded level-order binary tree was presented to the instructor.
-    Additionally, the pre-order traversal algorithm worked for the test-cases given in the lab paper.
-
-    Lab 1
-    - This exercise required to input a level-order binary tree where you can have null(left & right children).
-    - Moreover, a pre-order traversal must be applied after constructing the level-order binary tree.
-    - One of the learning post this lab exercise was remembering data structures from CMSC 122: DSA I class where
-        a queue can be used for the obstacle faced relating to a FIFO mechanism.
- */
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -73,23 +63,46 @@ class LevelOrderConstructor {
 }
 
 public class Main {
-    // Checking left and right of a node to identify if it's a leaf
-    public static int countLeaves(Node root) { 
-        if (root == null || root.data == -1) {
-            return 0;
+    // Tree traversal
+    // Account root as max
+    static int findMax(Node node) {
+        if (node == null || node.data == -1) {
+            return Integer.MIN_VALUE;
         }
-
-        // Level order tree includes a -1 input
-        // Handle in countLeaves recursion
-        if ((root.left == null || root.left.data == -1) 
-                && (root.right == null || root.right.data == -1)) {
-            // System.out.println(root.data); Print statement to identify the leaves of the tree
-            return 1;
+ 
+        int max = node.data;
+        int lMax = findMax(node.left);
+        int rMax = findMax(node.right);
+        
+        // rmax > lmax
+        if (lMax > rMax && lMax > max) {
+            max = lMax;
         }
-
-        return countLeaves(root.left) 
-                         + countLeaves(root.right);
+        else if(rMax > max) {
+            max = rMax;
+        }
+        return max;
     }
+
+    static int findMin(Node node) {
+        if (node == null || node.data == -1) {
+            return Integer.MAX_VALUE;
+        }
+ 
+        int min = node.data;
+        int lMin = findMin(node.left);
+        int rMin = findMin(node.right);
+        
+        if(lMin < rMin && lMin < min) {
+            min = lMin;
+        } 
+        else if(rMin < min) {
+            min = rMin;
+        }
+
+        return min;
+    }
+
     public static void main(String[] args) {
         // Utils
         Scanner scn = new Scanner(System.in);
@@ -108,8 +121,11 @@ public class Main {
         bt.createLevelOrderTree(); // Level order tree create
         
         // Pre-order the tree
-        int count = countLeaves(bt.getRoot());
-        System.out.println("Leaves: " + count);
+        int max = findMax(bt.getRoot());
+        int min = findMin(bt.getRoot());
+        
+        System.out.println("Max: " + max);
+        System.out.println("Min: " + min);
 
         scn.close();
     }

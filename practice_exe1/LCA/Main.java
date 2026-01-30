@@ -1,13 +1,3 @@
-/*
-    During this lab exercise (Lab 1 for CMSC 123), only a hardcoded level-order binary tree was presented to the instructor.
-    Additionally, the pre-order traversal algorithm worked for the test-cases given in the lab paper.
-
-    Lab 1
-    - This exercise required to input a level-order binary tree where you can have null(left & right children).
-    - Moreover, a pre-order traversal must be applied after constructing the level-order binary tree.
-    - One of the learning post this lab exercise was remembering data structures from CMSC 122: DSA I class where
-        a queue can be used for the obstacle faced relating to a FIFO mechanism.
- */
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Queue;
@@ -73,23 +63,6 @@ class LevelOrderConstructor {
 }
 
 public class Main {
-    // Checking left and right of a node to identify if it's a leaf
-    public static int countLeaves(Node root) { 
-        if (root == null || root.data == -1) {
-            return 0;
-        }
-
-        // Level order tree includes a -1 input
-        // Handle in countLeaves recursion
-        if ((root.left == null || root.left.data == -1) 
-                && (root.right == null || root.right.data == -1)) {
-            // System.out.println(root.data); Print statement to identify the leaves of the tree
-            return 1;
-        }
-
-        return countLeaves(root.left) 
-                         + countLeaves(root.right);
-    }
     public static void main(String[] args) {
         // Utils
         Scanner scn = new Scanner(System.in);
@@ -108,8 +81,8 @@ public class Main {
         bt.createLevelOrderTree(); // Level order tree create
         
         // Pre-order the tree
-        int count = countLeaves(bt.getRoot());
-        System.out.println("Leaves: " + count);
+        int max = findMax(bt.getRoot());
+        System.out.println("Max: " + max);
 
         scn.close();
     }

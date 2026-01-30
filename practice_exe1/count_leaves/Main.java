@@ -1,13 +1,3 @@
-/*
-    During this lab exercise (Lab 1 for CMSC 123), only a hardcoded level-order binary tree was presented to the instructor.
-    Additionally, the pre-order traversal algorithm worked for the test-cases given in the lab paper.
-
-    Lab 1
-    - This exercise required to input a level-order binary tree where you can have null(left & right children).
-    - Moreover, a pre-order traversal must be applied after constructing the level-order binary tree.
-    - One of the learning post this lab exercise was remembering data structures from CMSC 122: DSA I class where
-        a queue can be used for the obstacle faced relating to a FIFO mechanism.
- */
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Queue;

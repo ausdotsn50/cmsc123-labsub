@@ -7,7 +7,7 @@
     - Moreover, a pre-order traversal must be applied after constructing the level-order binary tree.
     - One of the learning post this lab exercise was remembering data structures from CMSC 122: DSA I class where
         a queue can be used for the obstacle faced relating to a FIFO mechanism.
- */
+*/
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;

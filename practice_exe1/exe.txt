@@ -1,0 +1,8 @@
+1. Construction of different binary trees
+    - level order: https://www.youtube.com/watch?v=7Cox-J7onXw
+    - unbalanced
+2. Identifying the number of leaves on a binary trees
+3. Finding the max / min value on a binary trees
+4. Find the kth smallest/largest value on a binary trees
+5. Lowest common ancestor
+6. Path sum problem
